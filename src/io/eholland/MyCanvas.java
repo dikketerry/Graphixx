@@ -5,15 +5,14 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GraphicalJComponent extends JComponent {
+public class MyCanvas extends Canvas {
 
     private static List<Drawable> drawables = new ArrayList<>();
     public static void add(Drawable drawable) {
         drawables.add(drawable);
     }
 
-    @Override
-    protected void paintComponent (Graphics g) {
+    public void paint(Graphics g) {
         for (Drawable drawable : drawables) {
             if (drawable instanceof Shape_Rectangle) {
                 Shape_Rectangle rectangle = (Shape_Rectangle) drawable;

@@ -1,27 +1,31 @@
 package io.eholland;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class Gui implements DrawingContext {
 
     private JFrame frame;
-    private GraphicalJComponent graphicalJComponent;
+    private MyCanvas canvas;
 
     public Gui(int w, int h) {
         frame = new JFrame();
-        frame.setSize(w, h);
+        canvas = new MyCanvas();
+        canvas.setSize(w, h);
+        canvas.setBackground(Color.white);
+        frame.add(canvas);
+        frame.pack();
         frame.setTitle("Testing shapes");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
 
-        graphicalJComponent = new GraphicalJComponent();
-        frame.add(graphicalJComponent);
+
 
     }
 
     public void add(DrawableArray s){
         for(int i = 0; i < s.getSize(); i++){
-            graphicalJComponent.add(s.drawables[i]);
+            canvas.add(s.drawables[i]);
         }
     }
 
