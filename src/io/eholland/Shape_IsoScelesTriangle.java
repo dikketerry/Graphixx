@@ -33,7 +33,11 @@ public class Shape_IsoScelesTriangle extends Shape_Triangle {
 
     // methods
     @Override
-    public void setWidth(int width) {
+    public void setWidth(int width) throws RuntimeException {
+        if (width < 0) {
+            throw new NegativeNumberException("negative width " +
+                    "isoscelestriangle");
+        }
         super.setWidth(width);
         super.setPerpendicular(width / 2);
     }
@@ -43,12 +47,6 @@ public class Shape_IsoScelesTriangle extends Shape_Triangle {
         super.setWidth(width);
         super.setPerpendicular(width/2);
     }
-
-    // referencing to the superclass is not correct in above override methods
-    // (as we want to override the method in superclass)
-    // however, we did not find the correct mathematical solution; we want to
-    // illustrate awareness of how to refer back and being aware of what we
-    // SHOULD put (a class specific formula for width and perpendicular)
 
     @Override
     public String toString() {

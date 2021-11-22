@@ -29,7 +29,9 @@ public class Line implements Drawable {
         return x1;
     }
 
-    public void setX1(int x1) {
+    public void setX1(int x1) throws RuntimeException {
+        if (x1 < 0)
+//            throw new RuntimeException()
         this.x1 = x1;
     }
 
@@ -71,7 +73,7 @@ public class Line implements Drawable {
     }
 
     @Override
-    public void scale(int factor) {
+    public void scale(float factor) {
 
     }
 

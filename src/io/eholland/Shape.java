@@ -21,12 +21,18 @@ public abstract class Shape implements Drawable {
     }
 
     // methods
-    public void setX(int x) {
-        this.x = makeAbsolute(x);
+    public void setX(int x) throws RuntimeException { // not needed here? as
+        if (x < 0) {                      // a shape will not be instantiated?
+            throw new NegativeNumberException("negative x-coordinate shape");
+        }
+        this.x = x;
     }
 
-    public void setY(int y) {
-        this.y = makeAbsolute(y);
+    public void setY(int y) throws RuntimeException {
+        if (y < 0) {
+            throw new NegativeNumberException("negative y-coordinate shape");
+        }
+        this.y = y;
     }
 
     public int getX() {
@@ -42,14 +48,14 @@ public abstract class Shape implements Drawable {
         setY(y);
     }
 
-    public int makeAbsolute(int originalValue) {
-        return Math.abs(originalValue);
-    }
+//    public int makeAbsolute(int originalValue) {
+//        return Math.abs(originalValue);
+//    }
 
     // abstract methods
-    public abstract double getArea();
+    public abstract float getArea();
 
-    public abstract double getPerimeter();
+    public abstract float getPerimeter();
 
     // static method
     public static int getCount() {

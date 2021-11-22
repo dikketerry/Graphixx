@@ -28,7 +28,10 @@ public class Shape_Square extends Shape_Rectangle {
     }
 
     // methods
-    public void setSide (int side) {
+    public void setSide (int side) throws RuntimeException {
+        if (side < 0) {
+            throw new NegativeNumberException("negative side square");
+        }
         super.setHeight(side);
         super.setWidth(side);
     }
@@ -38,12 +41,18 @@ public class Shape_Square extends Shape_Rectangle {
     }
 
     @Override
-    public void setHeight(int height) {
+    public void setHeight(int height) throws RuntimeException {
+        if (height < 0) {
+            throw new NegativeNumberException("negative height square");
+        }
         setSide(height);
     }
 
     @Override
-    public void setWidth (int width) {
+    public void setWidth (int width) throws RuntimeException {
+        if (width < 0) {
+            throw new NegativeNumberException("negative width square");
+        }
         setSide(width);
     }
 

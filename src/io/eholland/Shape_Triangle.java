@@ -22,7 +22,8 @@ public class Shape_Triangle extends Shape {
         this(width, height, perpendicular, 0, 0);
     }
 
-    public Shape_Triangle(int width, int height, int perpendicular, int x, int y) {
+    public Shape_Triangle(int width, int height, int perpendicular, int x,
+                          int y) {
         super(x, y);
         setWidth(width);
         setHeight(height);
@@ -40,7 +41,10 @@ public class Shape_Triangle extends Shape {
         return height;
     }
 
-    public void setHeight(int height) {
+    public void setHeight(int height) throws RuntimeException {
+        if (height < 0) {
+            throw new NegativeNumberException("negative height triangle");
+        }
         this.height = height;
     }
 
@@ -48,7 +52,10 @@ public class Shape_Triangle extends Shape {
         return width;
     }
 
-    public void setWidth(int width) {
+    public void setWidth(int width) throws RuntimeException {
+        if (width < 0) {
+            throw new NegativeNumberException("negative width triangle");
+        }
         this.width = width;
     }
 
@@ -56,19 +63,23 @@ public class Shape_Triangle extends Shape {
         return perpendicular;
     }
 
-    public void setPerpendicular(int perpendicular) {
+    public void setPerpendicular(int perpendicular) throws RuntimeException {
+        if (perpendicular < 0) {
+            throw new NegativeNumberException("negative perpendicular " +
+                    "triangle");
+        }
         this.perpendicular = perpendicular;
     }
 
     @Override
-    public double getArea() {
-        return ((double) (perpendicular + width) / 2);
+    public float getArea() {
+        return (perpendicular + width) / 2;
     }
 
     @Override
-    public double getPerimeter() {
-        return (width + height) + Math.sqrt((Math.pow(width, 2) + Math.pow(height
-                , 2)));
+    public float getPerimeter() {
+        return (float) ((width + height) + Math.sqrt((Math.pow(width, 2) + Math.pow(height
+                , 2))));
     }
 
     @Override
@@ -91,10 +102,10 @@ public class Shape_Triangle extends Shape {
     }
 
     @Override
-    public void scale(int factor) {
-        setHeight((getHeight() * factor) / 100);
-        setWidth((getWidth() * factor) / 100);
-        setPerpendicular((getPerpendicular() * factor) / 100);
+    public void scale(float factor) {
+        setHeight((int) (getHeight() * factor) / 100);
+        setWidth((int) (getWidth() * factor) / 100);
+        setPerpendicular((int) (getPerpendicular() * factor) / 100);
     }
 
     @Override

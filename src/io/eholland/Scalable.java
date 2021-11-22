@@ -6,7 +6,7 @@ public interface Scalable {
     int HALF = 50;
     int DOUBLE = 200;
 
-    void scale(int factor);
+    void scale(float factor);
 
     default void scaleDouble() {
         scale(DOUBLE);

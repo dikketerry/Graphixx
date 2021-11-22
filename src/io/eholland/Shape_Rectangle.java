@@ -1,5 +1,7 @@
 package io.eholland;
 
+import javax.management.RuntimeErrorException;
+
 public class Shape_Rectangle extends Shape {
 
     // variables
@@ -33,12 +35,16 @@ public class Shape_Rectangle extends Shape {
     }
 
     // methods
-    public void setWidth(int width) {
-        this.width = makeAbsolute(width);
+    public void setWidth(int width) throws RuntimeErrorException {
+        if (width < 0) throw new NegativeNumberException("negative width " +
+                "rectangle");
+        this.width = width;
     }
 
-    public void setHeight(int height) {
-        this.height = makeAbsolute(height);
+    public void setHeight(int height) throws RuntimeErrorException {
+        if (height < 0) throw new NegativeNumberException("negative height " +
+                "rectangle");
+        this.height = height;
     }
 
     public int getWidth() {
@@ -47,10 +53,6 @@ public class Shape_Rectangle extends Shape {
 
     public int getHeight() {
         return height;
-    }
-
-    public int grow(int d) {
-        return (getWidth() * d);
     }
 
     public static int getCount() {
@@ -64,18 +66,18 @@ public class Shape_Rectangle extends Shape {
     }
 
     @Override
-    public void scale(int factor) {
-        setHeight((getHeight() * factor) / 100);
-        setWidth((getWidth() * factor) / 100);
+    public void scale(float factor) {
+        setHeight((int) (getHeight() * factor) / 100);
+        setWidth((int) (getWidth() * factor) / 100);
     }
 
     @Override
-    public double getArea() {
-        return (height * width);
+    public float getArea() {
+        return height * width;
     }
 
     @Override
-    public double getPerimeter() {
+    public float getPerimeter() {
         return (height * 2) + (width * 2);
     }
 

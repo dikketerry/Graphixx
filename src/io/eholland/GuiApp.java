@@ -12,15 +12,12 @@ public class GuiApp {
 
         DrawableArray shapeArray = new DrawableArray();
 
-        shapeArray.add(rectangle);
-        shapeArray.add(rectangle2);
-        shapeArray.add(rectangle3);
-        shapeArray.add(line);
+        shapeArray.add(rectangle, rectangle2, rectangle3, line);
 
         Gui gui = new Gui(height, width);
         gui.add(shapeArray);
 
-        System.out.println(shapeArray.toString());
+        System.out.println(shapeArray);
 
     }
 }

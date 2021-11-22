@@ -1,11 +1,9 @@
 package io.eholland;
 
-public class Shape_Circle extends Shape {
+public class Shape_Circle extends Shape_Oval {
 
     // variables
-    public static final int ANGLES = 0;
     private static int count;
-    private int radius;
 
     // initialisation block
     {
@@ -22,8 +20,7 @@ public class Shape_Circle extends Shape {
     }
 
     public Shape_Circle(int radius, int x, int y) {
-        super(x, y);
-        setRadius(radius);
+        super(radius, radius, x, y);
     }
 
     public Shape_Circle(Shape_Circle circle) {
@@ -32,22 +29,25 @@ public class Shape_Circle extends Shape {
 
     //methods
     public int getRadius() {
-        return radius;
+        return getMajorRadius();
     }
 
-    public void setRadius(int radius) {
-        this.radius = makeAbsolute(radius);
-    }
-
-    // this is our get area methode--> and return type
-    @Override
-    public double getArea() {
-        return radius * radius * Math.PI;
+    public void setRadius(int radius) throws RuntimeException {
+        if (radius < 0) {
+            throw new NegativeNumberException("negative radius circle");
+        }
+        super.setMajorRadius(radius);
+        super.setMinorRadius(radius);
     }
 
     @Override
-    public double getPerimeter() {
-        return 2 * radius * Math.PI;
+    public float getArea() {
+        return (float) (Math.pow(this.getRadius(), 2) * Math.PI);
+    }
+
+    @Override
+    public float getPerimeter() {
+        return (float) (2 * this.getRadius() * Math.PI);
     }
 
     @Override
@@ -59,18 +59,18 @@ public class Shape_Circle extends Shape {
 
     @Override
     public int hashCode() {
-        return (super.hashCode() * radius);
+        return super.hashCode() * this.getRadius();
     }
 
     @Override
     public String toString() {
         return String.format("A circle with radius %d, area %f and perimeter " +
-                                     "%f", radius, getArea(), getPerimeter());
+                                     "%f", getRadius(), getArea(), getPerimeter());
     }
 
     @Override
-    public void scale(int factor) {
-        setRadius((getRadius() * factor) / 100);
+    public void scale(float factor) {
+        setRadius((int) (getRadius() * factor) / 100);
     }
 
     @Override
@@ -78,12 +78,7 @@ public class Shape_Circle extends Shape {
         dc.draw(this);
     }
 
-    public void grow(int d) {
-        setRadius(radius * d);
-    }
-
     public static int getCount() {
         return count;
     }
-
 }
