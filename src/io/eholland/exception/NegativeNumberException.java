@@ -1,4 +1,4 @@
-package io.eholland;
+package io.eholland.exception;
 
 public class NegativeNumberException extends IllegalArgumentException {
 

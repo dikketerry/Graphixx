@@ -1,4 +1,6 @@
-package io.eholland;
+package io.eholland.shapes;
+
+import io.eholland.exception.NegativeNumberException;
 
 public class Shape_IsoScelesTriangle extends Shape_Triangle {
 

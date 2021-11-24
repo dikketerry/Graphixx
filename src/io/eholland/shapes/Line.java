@@ -1,4 +1,7 @@
-package io.eholland;
+package io.eholland.shapes;
+
+import io.eholland.Drawable;
+import io.eholland.DrawingContext;
 
 public class Line implements Drawable {
 

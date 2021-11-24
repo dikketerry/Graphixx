@@ -15,19 +15,18 @@ public class DrawableArray implements Drawable, Iterable<Drawable> {
     }
 
     public DrawableArray() {
-        drawables = new Drawable[100];
+        drawables = new Drawable[1000];
         size = 0;
     }
 
     public void add(Drawable d) {
 
-        int index = findElementIndex(null); // find the 1st null in array of
-        // drawables, as that is the position we want to add a new drawable to
+        int index = findElementIndex(null); // find the 1st null in array
 
-        if (findElementIndex(d) != -1) { // check if the drawable we want to
-            // add, already exists in the array of drawables.
-            return; // if it does exist, we exit (we don't add)
-        }
+//        if (findElementIndex(d) != -1) { // check if the drawable we want to
+//            // add, already exists in the array of drawables.
+//            return; // if it does exist, we exit (we don't add)
+//        }
 
         if (index == -1) { // check if array is full / has no empty places
             drawables = Arrays.copyOf(drawables, drawables.length + 1);
@@ -39,7 +38,7 @@ public class DrawableArray implements Drawable, Iterable<Drawable> {
     }
 
     public void add(Drawable... drawables) {
-        // ... notation allows for inputting different objects or an array fo
+        // ... notation allows for inputting different objects or array of
         // objects
         for (Drawable drawable : drawables) {
             add(drawable);
@@ -102,7 +101,7 @@ public class DrawableArray implements Drawable, Iterable<Drawable> {
         String toReturn = "";                           // loop through array,
         for (Drawable drawable : drawables) {           // filter out nulls,
             if (drawable != null) {                     // fill string with spe-
-                toReturn += drawable.toString() + "\n"; // cific toString from
+                toReturn += drawable + "\n";            // cific toString from
             }                                           // each individual
         }                                               // toString and add
         return toReturn;                                // a linebreak. Return.

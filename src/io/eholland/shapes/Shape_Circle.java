@@ -1,4 +1,7 @@
-package io.eholland;
+package io.eholland.shapes;
+
+import io.eholland.DrawingContext;
+import io.eholland.exception.NegativeNumberException;
 
 public class Shape_Circle extends Shape_Oval {
 

@@ -1,4 +1,6 @@
-package io.eholland;
+package io.eholland.shapes;
+
+import io.eholland.exception.NegativeNumberException;
 
 public class Shape_Square extends Shape_Rectangle {
 

@@ -1,4 +1,7 @@
-package io.eholland;
+package io.eholland.shapes;
+
+import io.eholland.Drawable;
+import io.eholland.exception.NegativeNumberException;
 
 public abstract class Shape implements Drawable {
     // variables
